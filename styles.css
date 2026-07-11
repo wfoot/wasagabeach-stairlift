@@ -245,6 +245,16 @@ strong{color:var(--ink)}
 .hero-photo{position:relative;isolation:isolate;overflow:hidden;background:var(--accent-2)}
 .hero-photo .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center;z-index:0}
 video.hero-bg{pointer-events:none}
+/* Show the whole video frame (no crop), anchored right; navy fills the rest.
+   The left edge feathers into the navy so there is no visible seam. */
+.hero-photo video.hero-bg{
+  object-fit:contain;object-position:right center;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 22%);
+}
+@media (max-width:820px){
+  .hero-photo video.hero-bg{object-fit:cover;object-position:center;-webkit-mask-image:none;mask-image:none}
+}
 .hero-photo .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(21,34,51,.96) 0%,rgba(27,47,71,.88) 40%,rgba(27,47,71,.48) 72%,rgba(27,47,71,.08) 100%)}
 .hero-photo .wrap{position:relative;z-index:2}
 .hero-inner{max-width:600px;color:#fff;padding-block:clamp(3.5rem,9vw,6.25rem)}
