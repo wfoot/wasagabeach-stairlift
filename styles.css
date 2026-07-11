@@ -376,6 +376,24 @@ video.hero-bg{pointer-events:none}
 .faq p{margin:0 0 1.15rem;color:var(--body)}
 .faq summary:hover{color:var(--accent)}
 
+/* ===== v7: compact mobile — card grids become horizontal swipe rows ===== */
+@media (max-width:820px){
+  .section{padding-block:2.4rem}
+  .section-lead{margin-bottom:1.4rem}
+  .feature-grid,.product-grid,.product-grid--2,.product-grid--3,.gallery-grid,.quote-grid{
+    display:flex;overflow-x:auto;gap:.9rem;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;padding-bottom:.6rem;margin-top:1.25rem;
+  }
+  .feature-card,.product-card,.quote{flex:0 0 76%;scroll-snap-align:start}
+  .feature-card{flex-basis:62%}
+  .gallery-grid img{flex:0 0 72%;width:72%;scroll-snap-align:start}
+  /* assessment-band photos: side by side instead of stacked */
+  .split-media--gallery{grid-template-columns:1fr 1fr}
+  .split-media--gallery img:first-child{display:block}
+  .section-cta{margin-top:1.4rem}
+}
+
 /* Power options: one compact row so it reads differently from the why-grid */
 .power-grid{grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .power-grid .why-item{flex-direction:column;gap:.75rem}
